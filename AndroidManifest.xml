@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.dev.cramit"
+      android:versionCode="1"
+      android:versionName="1.0" android:installLocation="preferExternal">
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+<uses-sdk android:minSdkVersion="8"></uses-sdk>
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".Init"
+                  android:label="@string/app_name" android:screenOrientation="portrait" android:launchMode="standard" android:alwaysRetainTaskState="true" android:multiprocess="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".ProblemView"
+        		android:label="@string/problem_view" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".Options"
+        		android:label="@string/problem">
+        </activity>
+        
+        <activity android:name=".WListByAlphabet"
+        		android:label="@string/wl_by_alphabet" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".WListByAlphabetRnd"
+        		android:label="@string/wl_by_alphabet" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".WListByAlphabetOrd"
+        		android:label="@string/wl_by_alphabet" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".HelpPage"
+        		android:label="@string/helpPageHeading" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".TestMe"
+        		android:label="@string/testMeHeading" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".AllWordsList"
+        		android:label="@string/all_words">
+        </activity>
+        
+        <activity android:name=".MarkedWordsList"
+        		android:label="@string/marked_words">
+        </activity>
+        
+    <activity android:name="Preferences" android:label="Preferences"></activity>
+</application>
+</manifest> 
