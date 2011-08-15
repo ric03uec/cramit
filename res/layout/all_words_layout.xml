@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  	xmlns:android="http://schemas.android.com/apk/res/android"
+  	android:layout_width="fill_parent"
+  	android:orientation="horizontal" 
+  	android:layout_height="fill_parent">
+	<TextView android:background="#ffffff" 
+		android:layout_width="match_parent" 
+		android:text="Word" 
+		android:layout_height="60dip" 
+		android:id="@+id/all_words_list" 
+		android:layout_weight="1" 
+		android:textColor="#000000" 
+		android:textSize="25sp">
+	</TextView>
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Init!</string>
+    <string name="min_sdk_version">2.2</string>
+    <string name="app_name">Cram It</string>
+    <string name="problem_view">Problem</string>
+    <string name="wl_by_alphabet">Word List By Alphabet</string>
+    <string-array name="mainMenu">
+    	<item>CRAM IT</item>
+    	<item>Select App Mode</item>
+    	<item></item>
+    	<item>Alphabetical (In Order)</item>
+    	<item></item>
+    	<item>Alphabetical (Random)</item>
+    	<item></item>
+    	<item>All Words</item>
+    	<item></item>
+    	<item>Marked Words</item>
+    	<item></item>
+    	<item>Help</item>
+    </string-array>
+    <string name="reset_list">Reset</string>
+    <string name="random_list">Randomise</string>
+    <string name="footer_text">Select</string>
+    <string name="problem">Problem</string>
+    <string name="preferences">Preferences</string>
+    <string name="all_words">All Words</string>
+    <string name="reset_words">Reset</string>
+    <string name="goto_letter">GoTo</string>
+    <string name="marked_words">Marked Words</string>
+    <string name="wlByAlpStatsHeading">STATISTICS</string>
+    <string name="testMeHeading">Test Me</string>
+    <string name="helpPageHeading">Help</string>
+</resources>
