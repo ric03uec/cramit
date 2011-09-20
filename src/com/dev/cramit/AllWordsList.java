@@ -92,7 +92,6 @@ public class AllWordsList extends ListActivity {
 	protected void gatherWordList(){
 		mWordsDbHelper = new WordsDbAdapter(this);
         mWordsDbHelper.open(WCConstants.isFirstRunInstance);
-        WCConstants.isFirstRunInstance = false;
         
         Cursor c = mWordsDbHelper.getWords();
         startManagingCursor(c);

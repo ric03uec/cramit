@@ -42,6 +42,7 @@ public class WordsDbAdapter {
      * @return
      */
     public WordsDbAdapter open(boolean isFirstInstance){
+    	Log.d(TAG, "IS first run instance " + isFirstInstance);
     	mDbHelper = new DatabaseHelper(ctx, isFirstInstance);
     	WCConstants.isFirstRunInstance = false;
     	mDb = mDbHelper.getWritableDatabase();
@@ -134,6 +135,7 @@ public class WordsDbAdapter {
             
             if(!isFirsRunInstance){
             	openDataBase();
+            	Log.d(TAG, "Not the First instance of WORDSDBADAPTER....");
             	return;
             }
             
@@ -176,6 +178,15 @@ public class WordsDbAdapter {
             		throw new Error("Error copying database");
             	}
         	}
+        	
+//        	this.getReadableDatabase();
+//            
+//        	try {
+//    			copyDataBase();
+//    			Log.d(TAG, "Creating new database... ");
+//    		} catch (IOException e) {
+//        		throw new Error("Error copying database");
+//        	}
         }
         
         /**

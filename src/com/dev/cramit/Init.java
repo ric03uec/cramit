@@ -57,7 +57,6 @@ public class Init extends ListActivity {
 	protected static Integer LETTER_SELECT_DIALOG = 1;
 	protected static Integer TEST_BEGIN_DIALOG	  = 2;
 	private static final int LOADING_DIALOGUE_CODE = 3;
-	private static final int HELP_DIALOGUE_CODE		= 5;
 	
 	protected static boolean isRandomWL		= false;
 	

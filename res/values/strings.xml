@@ -31,4 +31,5 @@
     <string name="wlByAlpStatsHeading">STATISTICS</string>
     <string name="testMeHeading">Test Me</string>
     <string name="helpPageHeading">Help</string>
+    <string name="crashToastText">Cram-iT Crashed !!! but a report has been sent to the developer and the problem will be resolved soon. </string>
 </resources>

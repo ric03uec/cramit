@@ -36,7 +36,7 @@ public class MainMenuAdapter extends ArrayAdapter<String> {
      public View getView(int position, View convertView, ViewGroup parent) {
      	
      	ViewHolder holder;
-     	View rowView = convertView;
+     	View rowView = null;
      	
      	if (rowView == null) {
      		LayoutInflater inflater = context.getLayoutInflater();
