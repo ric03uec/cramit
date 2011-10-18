@@ -104,9 +104,9 @@ public class Init extends ListActivity {
 			Intent intent = new Intent(Init.this, HelpPage.class);
 			startActivity(intent);
 		}
-		/*else if(11 == position){
-			showDialog(TEST_BEGIN_DIALOG);
-		}*/
+//		else if(11 == position){
+//			showDialog(TEST_BEGIN_DIALOG);
+//		}
 	}
     
     @Override

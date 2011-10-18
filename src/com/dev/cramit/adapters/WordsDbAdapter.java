@@ -31,8 +31,6 @@ public class WordsDbAdapter {
     
     private final Context ctx;
     
-    private static final int DATABASE_VERSION = 2;
-    
     public WordsDbAdapter(Context ctx){
     	this.ctx = ctx;
     }
@@ -66,7 +64,7 @@ public class WordsDbAdapter {
      */
     public Cursor getWords(){
     	return mDb.query("word_list", 
-    			new String[] {"_id", "word", "meaning", "rank"}, 
+    			new String[] {"_id", "word", "meaning", "word_usage", "rank"}, 
     			null, null, null, null, null);
     }
     
@@ -77,7 +75,7 @@ public class WordsDbAdapter {
      */
     public Cursor getWordsWithRank(int rank){
     	return mDb.query("word_list", 
-    			new String[] {"_id", "word", "meaning", "rank"}, 
+    			new String[] {"_id", "word", "meaning", "word_usage", "rank"}, 
     			"rank=" + Integer.toString(rank) , null, null, null, null);
     }
     
@@ -125,19 +123,22 @@ public class WordsDbAdapter {
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
     	private static String DB_PATH = "/data/data/com.dev.cramit/databases/";
+    	/**
+    	 * Have to name the database as one of the extensions that are NOT compressed during the compression
+    	 * of the APK. If it is compressed, then it has to be split and then joined before it can 
+    	 * be used at the device.
+    	 */
     	private static String DB_NAME = "CramIt.png";
     	
     	private SQLiteDatabase myDataBase; 
     	private final Context myContext;
 
-    	
         DatabaseHelper(Context context, boolean isFirsRunInstance) {
-            super(context, DB_NAME, null, 1);
+            super(context, DB_NAME, null, 2);
             this.myContext = context;
             
             if(!isFirsRunInstance){
             	openDataBase();
-            	Log.d(TAG, "Not the First instance of WORDSDBADAPTER....");
             	return;
             }
             
@@ -150,12 +151,13 @@ public class WordsDbAdapter {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-        	Log.d(TAG, "Creating Database...");
+        	Log.d(TAG, "Creating Database from 'onCreate()' ...");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
+            
 //            onCreate(db);
         }
         
@@ -167,29 +169,17 @@ public class WordsDbAdapter {
      
         	if(checkDataBase()){
         		openDataBase();
-        		Log.d(TAG, "Database exists... Opening Database...");
         	}else{
-     
         		//By calling this method and empty database will be created into the default system path
                 //of your application so we are gonna be able to overwrite that database with our database.
             	this.getReadableDatabase();
-     
+            	Log.d(TAG, "Creating new Default Database... ");
             	try {
         			copyDataBase();
-        			Log.d(TAG, "Creating new database... ");
         		} catch (IOException e) {
             		throw new Error("Error copying database");
             	}
         	}
-        	
-//        	this.getReadableDatabase();
-//            
-//        	try {
-//    			copyDataBase();
-//    			Log.d(TAG, "Creating new database... ");
-//    		} catch (IOException e) {
-//        		throw new Error("Error copying database");
-//        	}
         }
         
         /**
@@ -220,15 +210,14 @@ public class WordsDbAdapter {
 	        		myOutput.write(buffer, 0, length);
 	        	}
 	        	Log.d(TAG, "db copied... closing streams..");
+	        	
 	        	//Close the streams
 	        	myOutput.flush();
 	        	myOutput.close();
 	        	myInput.close();
         	}catch (IOException e){
         		Log.d(TAG, "Error while copying database");
-        		Log.d(TAG, "" + e);
         	}
-     
         }
 
         /**
@@ -244,26 +233,23 @@ public class WordsDbAdapter {
         		checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
         		File f = new File(myPath);
         		if(f.exists()){
-        			Log.d(TAG, "Database found... yipee");
-//        			boolean success = f.delete();
-//        			if(success){
-//        				Log.d(TAG, "Deleted existing database...");
-//        				checkDB.close();
-//        				return false;
-//        			}
+        			Log.d(TAG, "Database found in the Assets folder...");
         			checkDB.close();
         			return true;
         		}
         	}catch(SQLiteException e){
-        		Log.d(TAG, "Unable to find already existing database...");
+        		Log.d(TAG, "Unable to find already existing database in Assets folder...");
         	}finally{
         		if(null != checkDB)
         			checkDB.close();
         	}
-//        	return checkDB != null ? true : false;
         	return false;
         }
         
+        /**
+         * Open the Database which exists in the assets folder
+         * @throws SQLException
+         */
         public void openDataBase() throws SQLException{
         	Log.d(TAG, "opening database..." + DB_PATH + DB_NAME);
             String myPath = DB_PATH + DB_NAME;

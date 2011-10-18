@@ -15,24 +15,26 @@ public class Word implements Parcelable{
 	private int	wordId;
 	private String word;
 	private String meaning;
+	private String wordUsage;
 	private int rank;
 	private int rootId;
 	private int visitCount;
-	
 
 	public Word(Word original){
 		this.wordId = original.getWordId();
 		this.word 	= original.getWord();
 		this.meaning = original.getMeaning();
+		this.wordUsage = original.getUsage();
 		this.rank	= original.getRank();
 		this.rootId	= original.getRootId();
 		this.visitCount = original.getVisitCount();
 	}
 	
-	public Word(int wordId, String word, String meaning, int rank, int rootId, int visitCount) {
+	public Word(int wordId, String word, String meaning, String usage, int rank, int rootId, int visitCount) {
 		this.wordId = wordId;
 		this.word = word;
 		this.meaning = meaning;
+		this.wordUsage = usage;
 		this.rank = rank;
 		this.rootId = rootId;
 		this.visitCount = visitCount;
@@ -45,6 +47,7 @@ public class Word implements Parcelable{
 		wordId 	= source.readInt();
 		word 	= source.readString();
 		meaning = source.readString();
+		wordUsage = source.readString();
 		rank 	= source.readInt();
 		rootId	= source.readInt();
 		visitCount = source.readInt();
@@ -71,6 +74,15 @@ public class Word implements Parcelable{
 
 	public void setMeaning(String meaning){
 		this.meaning = meaning;
+	}
+	
+	//----------getter/setter for usage--------//
+	public String getUsage(){
+		return this.wordUsage;
+	}
+	
+	public void setUsage(String usage){
+		this.wordUsage = usage;
 	}
 	
 	//-----------getter/setter for rank-------//
@@ -112,6 +124,7 @@ public class Word implements Parcelable{
 		dest.writeInt(wordId);
 		dest.writeString(word);
 		dest.writeString(meaning);
+		dest.writeString(wordUsage);
 		dest.writeInt(rank);
 		dest.writeInt(rootId);
 		dest.writeInt(visitCount);

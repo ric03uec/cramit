@@ -71,8 +71,11 @@ public class MarkedWordsList extends ListActivity {
         startManagingCursor(c);
         
         for(c.moveToFirst(); c.moveToNext(); c.isAfterLast()){
-        	Word word = new Word(c.getInt(c.getColumnIndex("_id")), c.getString(c.getColumnIndex("word")), c.getString(c.getColumnIndex("meaning")), 
-        			c.getInt(c.getColumnIndex("rank")), 0, 0);
+        	Word word = new Word(c.getInt(c.getColumnIndex("_id")), 
+        							c.getString(c.getColumnIndex("word")), 
+        								c.getString(c.getColumnIndex("meaning")),
+        									c.getString(c.getColumnIndex("word_usage")),
+        										c.getInt(c.getColumnIndex("rank")), 0, 0);
         	mWordList.add(word);
         }
         

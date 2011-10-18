@@ -33,24 +33,30 @@ public class AllWordsAdapter extends ArrayAdapter<Word>{
 			view = inflator.inflate(R.layout.all_words_entry, null);
 			viewHolder.wordTextView 	= (TextView) view.findViewById(R.id.all_words_list_entry);
 			viewHolder.meaningTextView 	= (TextView) view.findViewById(R.id.all_words_list_entry_meaning);
+			viewHolder.usageTextView	= (TextView) view.findViewById(R.id.all_words_list_entry_usage);
 			
 			view.setTag(viewHolder);
 		}else{
 			view = convertView;
 			((ViewHolder) view.getTag()).wordTextView.setTag(position);
 			((ViewHolder) view.getTag()).meaningTextView.setTag(position);
-			
+			((ViewHolder) view.getTag()).usageTextView.setTag(position);
 		}
 		
 		ViewHolder holder = (ViewHolder) view.getTag();
-		holder.wordTextView.setText(wordList.get(position).getWord());
+		holder.wordTextView.setText(wordList.get(position).getWord().toUpperCase());
 		holder.meaningTextView.setText(wordList.get(position).getMeaning());
+		if((wordList.get(position).getUsage() != null) &&
+				!wordList.get(position).getUsage().trim().equals("")){
+			holder.usageTextView.setText(wordList.get(position).getUsage());
+		}
 		return view;
 	}
 	
 	static class ViewHolder {
  		public TextView wordTextView;
  		public TextView meaningTextView;
+ 		public TextView usageTextView;
  	}
 	
 
