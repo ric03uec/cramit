@@ -163,7 +163,6 @@ public class AllWordsList extends ListActivity {
     		});
     		return alert;
     	}
-    	
     	Log.d(TAG, "Test change in master");
     	return null;
     }
