@@ -31,6 +31,8 @@ public class WordsDbAdapter {
     
     private final Context ctx;
     
+    private static final int DATABASE_VERSION = 2;
+    
     public WordsDbAdapter(Context ctx){
     	this.ctx = ctx;
     }
@@ -123,7 +125,7 @@ public class WordsDbAdapter {
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
     	private static String DB_PATH = "/data/data/com.dev.cramit/databases/";
-    	private static String DB_NAME = "CramIt";
+    	private static String DB_NAME = "CramIt.png";
     	
     	private SQLiteDatabase myDataBase; 
     	private final Context myContext;
@@ -148,12 +150,13 @@ public class WordsDbAdapter {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+        	Log.d(TAG, "Creating Database...");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
-            onCreate(db);
+//            onCreate(db);
         }
         
         
