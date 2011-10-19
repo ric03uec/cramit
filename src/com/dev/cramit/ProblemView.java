@@ -96,6 +96,11 @@ public class ProblemView extends Activity {
 		}
 	};
 	
+	/**
+	 * Check if the 'answer' is the correct answer to the current question
+	 * @param answer
+	 * @return
+	 */
 	protected boolean isCorrectAnswer(Word answer){
 		if(answer.getWord().trim().equals(currentProblem.getQuestion().getWord().trim())){
 			return true;

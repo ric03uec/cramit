@@ -49,6 +49,8 @@ public class AllWordsAdapter extends ArrayAdapter<Word>{
 		if((wordList.get(position).getUsage() != null) &&
 				!wordList.get(position).getUsage().trim().equals("")){
 			holder.usageTextView.setText(wordList.get(position).getUsage());
+		}else{
+			holder.usageTextView.setText("");
 		}
 		return view;
 	}
