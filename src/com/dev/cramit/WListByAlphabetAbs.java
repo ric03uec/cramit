@@ -265,6 +265,7 @@ public abstract class WListByAlphabetAbs extends Activity {
 	private void gatherWordList(){
 		mWordsDbHelper = new WordsDbAdapter(this);
         mWordsDbHelper.open(WCConstants.isFirstRunInstance);
+        Log.d(TAG, "Getting words for Letter --> " + mCurrentLetter);
         
         Cursor c = mWordsDbHelper.getWordsForLetter(mCurrentLetter);
         startManagingCursor(c);
